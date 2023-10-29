@@ -54,6 +54,7 @@ android {
 
 dependencies {
     val nav_version = "2.7.4"
+    val room_version = "2.6.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -72,7 +73,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     //extends Material icon
-    implementation ("androidx.compose.material:material-icons-extended:1.6.0-alpha08")
+    implementation("androidx.compose.material:material-icons-extended:1.6.0-alpha08")
 
     //navigation jetpack
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
@@ -84,5 +85,11 @@ dependencies {
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
+    //room database
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    // optional - Paging 3 Integration
+    implementation("androidx.room:room-paging:$room_version")
 
 }
