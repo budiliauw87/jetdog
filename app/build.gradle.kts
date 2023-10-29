@@ -71,8 +71,10 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    //navigation
-    // Kotlin
+    //extends Material icon
+    implementation ("androidx.compose.material:material-icons-extended:1.6.0-alpha08")
+
+    //navigation jetpack
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     // Feature module Support

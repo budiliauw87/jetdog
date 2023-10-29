@@ -42,12 +42,13 @@ fun HomeScreen(navController: NavHostController) {
 }
 
 @Preview(
+    group="Test",
     name = "Light Mode",
+    showBackground = true,
+    showSystemUi = true,
+    device = "id:pixel_4"
 )
-@Preview(
-    name = "Dark Mode", showBackground = true,
-    uiMode = Configuration.UI_MODE_NIGHT_YES
-)
+
 @Composable
 fun HomeScreenPreview() {
     val navController = rememberNavController()

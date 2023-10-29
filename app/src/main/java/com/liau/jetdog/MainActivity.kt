@@ -1,5 +1,6 @@
 package com.liau.jetdog
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -65,6 +66,13 @@ fun JetDogApp(){
     showBackground = true,
     showSystemUi = true,
     device = "id:pixel_5"
+)
+@Preview(
+    name = "Dark Mode",
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showSystemUi = true,
+    device = "id:pixel_4"
 )
 @Composable
 fun JetDogAppPreview() {
