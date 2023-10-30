@@ -1,8 +1,16 @@
 package com.liau.jetgithub.core.di
 
 import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.liau.jetgithub.core.data.DogRepository
+import com.liau.jetgithub.core.data.local.AppPreferences
+import com.liau.jetgithub.core.data.local.database.JetDogDatabase
+import com.liau.jetgithub.core.data.network.ApiConfig
+import com.liau.jetgithub.util.AppExecutors
 
 /**
  * Created by Budiman on 19/01/2023.
@@ -12,14 +20,14 @@ import androidx.lifecycle.ViewModelProvider
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings_jetgithub")
 
-class ViewModelFactory(private val repo: GitRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val repo: DogRepository) : ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            return MainViewModel(repo) as T
-        }else if( modelClass.isAssignableFrom(DetailViewModel::class.java)){
-            return DetailViewModel(repo) as T
-        }
+//        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+//            return MainViewModel(repo) as T
+//        }else if( modelClass.isAssignableFrom(DetailViewModel::class.java)){
+//            return DetailViewModel(repo) as T
+//        }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
 
@@ -36,11 +44,11 @@ class ViewModelFactory(private val repo: GitRepository) : ViewModelProvider.NewI
 
 
 object Injector {
-    fun provideRepository(context: Context): GitRepository {
-        val database = JetDatabase.getInstance(context)
+    fun provideRepository(context: Context): DogRepository {
+        val database = JetDogDatabase.getInstance(context)
         val appExecutors = AppExecutors()
         val apiService = ApiConfig.provideApiService()
         val preferences = AppPreferences.getInstance(context.dataStore)
-        return GitRepository.getInstance(apiService, preferences,appExecutors, database)
+        return DogRepository.getInstance(apiService, preferences, appExecutors, database)
     }
 }

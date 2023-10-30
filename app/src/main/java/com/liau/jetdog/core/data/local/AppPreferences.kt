@@ -5,7 +5,6 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.liau.jetgithub.core.model.ConfigApp
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -55,3 +54,5 @@ class AppPreferences private constructor(private val dataStore: DataStore<Prefer
     }
 
 }
+data class ConfigApp(val language: String, val darkMode: Boolean)
+

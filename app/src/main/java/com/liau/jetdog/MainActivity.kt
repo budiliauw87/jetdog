@@ -37,7 +37,6 @@ fun JetDogApp(){
     JetDogTheme {
         val navController = rememberNavController()
         val navBackStackEntry by navController.currentBackStackEntryAsState()
-        //val currentDestination = navBackStackEntry?.destination
 
         Scaffold(
             topBar = {},
