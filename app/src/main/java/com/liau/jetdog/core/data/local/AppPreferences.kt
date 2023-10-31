@@ -1,4 +1,4 @@
-package com.liau.jetgithub.core.data.local
+package com.liau.jetdog.core.data.local
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

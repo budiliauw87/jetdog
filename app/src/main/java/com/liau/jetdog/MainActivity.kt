@@ -15,16 +15,17 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.liau.jetdog.ui.home.HomeScreen
 import com.liau.jetdog.ui.theme.JetDogTheme
 import com.liau.jetgithub.navigation.Screen
 import com.liau.jetgithub.ui.component.BottomBar
 import com.liaudev.jetgithub.ui.home.AboutScreen
 import com.liaudev.jetgithub.ui.home.FavoriteScreen
-import com.liaudev.jetgithub.ui.home.HomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             JetDogApp()
         }

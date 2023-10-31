@@ -2,12 +2,13 @@ package com.liau.jetdog
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.liau.jetgithub.core.data.DogRepository
-import com.liau.jetgithub.core.data.local.entity.DogEntity
-import kotlinx.coroutines.flow.SharingStarted
+import com.liau.jetdog.core.data.DogRepository
+import com.liau.jetdog.core.data.local.entity.DogEntity
+import com.liau.jetdog.state.UiState
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.single
+import kotlinx.coroutines.launch
 
 
 /**
@@ -16,16 +17,16 @@ import kotlinx.coroutines.flow.stateIn
  * Budiliauw87@gmail.com
  */
 class MainViewModel(private val repository: DogRepository) : ViewModel() {
-    val uiState: StateFlow<MainUiState> = repository.getDogBreed().map {
-        MainUiState.Success(it)
-    }.stateIn(
-        scope = viewModelScope,
-        initialValue = MainUiState.Loading,
-        started = SharingStarted.WhileSubscribed(5_000),
-    )
+    private val _uiState: MutableStateFlow<UiState<DogEntity>> =
+        MutableStateFlow(UiState.Loading)
+    val uiState: StateFlow<UiState<DogEntity>>
+        get() = _uiState
+
+    fun getDogBreeds() {
+        viewModelScope.launch {
+            _uiState.value = UiState.Loading
+            _uiState.value = UiState.Success(repository.getDogBreed().single())
+        }
+    }
 }
 
-sealed interface MainUiState {
-    object Loading : MainUiState
-    data class Success(val entity: DogEntity) : MainUiState
-}

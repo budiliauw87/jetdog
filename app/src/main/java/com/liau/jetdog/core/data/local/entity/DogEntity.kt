@@ -1,4 +1,4 @@
-package com.liau.jetgithub.core.data.local.entity
+package com.liau.jetdog.core.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

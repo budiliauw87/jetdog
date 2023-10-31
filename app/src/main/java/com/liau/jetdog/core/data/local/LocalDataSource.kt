@@ -1,6 +1,6 @@
-package com.liau.jetgithub.core.data.local
+package com.liau.jetdog.core.data.local
 
-import com.liau.jetgithub.core.data.local.database.BreedDao
+import com.liau.jetdog.core.data.local.database.BreedDao
 
 /**
  * Created by Budiman on 27/01/2023.

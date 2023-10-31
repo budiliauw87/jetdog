@@ -1,4 +1,4 @@
-package com.liau.jetgithub.state
+package com.liau.jetdog.state
 
 /**
  * Created by Budiman on 20/01/2023.

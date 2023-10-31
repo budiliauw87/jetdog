@@ -1,4 +1,4 @@
-package com.liau.jetgithub.util
+package com.liau.jetdog.core.data
 
 import android.os.Handler
 import android.os.Looper

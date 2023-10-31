@@ -1,7 +1,7 @@
-package com.liau.jetgithub.core.data.local.database
+package com.liau.jetdog.core.data.local.database
 
 import androidx.room.*
-import com.liau.jetgithub.core.data.local.entity.DogEntity
+import com.liau.jetdog.core.data.local.entity.DogEntity
 
 /**
  * Created by Budiman on 27/01/2023.

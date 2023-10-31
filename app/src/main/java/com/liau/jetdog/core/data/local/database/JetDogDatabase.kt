@@ -1,10 +1,10 @@
-package com.liau.jetgithub.core.data.local.database
+package com.liau.jetdog.core.data.local.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.liau.jetgithub.core.data.local.entity.DogEntity
+import com.liau.jetdog.core.data.local.entity.DogEntity
 
 /**
  * Created by Budiman on 26/01/2023.
@@ -24,7 +24,7 @@ abstract class JetDogDatabase:RoomDatabase() {
                 Room.databaseBuilder(
                     context.applicationContext,
                     JetDogDatabase::class.java,
-                    "JetGithubDatabase.db"
+                    "jetdogapp.db"
                 ).build().apply {
                     INSTANCE = this
                 }

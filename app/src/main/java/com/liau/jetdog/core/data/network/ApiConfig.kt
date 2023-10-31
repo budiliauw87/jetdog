@@ -1,4 +1,4 @@
-package com.liau.jetgithub.core.data.network
+package com.liau.jetdog.core.data.network
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

@@ -1,11 +1,9 @@
-package com.liau.jetgithub.core.data
+package com.liau.jetdog.core.data
 
-import com.liau.jetgithub.core.data.local.AppPreferences
-import com.liau.jetgithub.core.data.local.database.JetDogDatabase
-import com.liau.jetgithub.core.data.local.entity.DogEntity
-import com.liau.jetgithub.core.data.network.ApiService
-import com.liau.jetgithub.util.AppExecutors
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import com.liau.jetdog.core.data.local.AppPreferences
+import com.liau.jetdog.core.data.local.database.JetDogDatabase
+import com.liau.jetdog.core.data.local.entity.DogEntity
+import com.liau.jetdog.core.data.network.ApiService
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +14,6 @@ import kotlinx.coroutines.flow.flow
  * Email budiliauw87@gmail.com
  * Github github.com/budiliauw87
  */
-@OptIn(ExperimentalCoroutinesApi::class)
 class DogRepository(
     private val apiService: ApiService,
     private val pref: AppPreferences,
@@ -30,7 +27,6 @@ class DogRepository(
     fun getDogBreed(): Flow<DogEntity> = flow {
         delay(2000)
         emit(DogEntity(1, "tester", ""))
-
     }
 
     companion object {
