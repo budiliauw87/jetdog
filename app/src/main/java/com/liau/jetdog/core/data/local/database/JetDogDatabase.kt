@@ -13,7 +13,7 @@ import com.liau.jetdog.core.data.local.entity.DogEntity
  */
 @Database(entities = [DogEntity::class], version = 1, exportSchema = false)
 abstract class JetDogDatabase:RoomDatabase() {
-    abstract fun breedDao(): BreedDao
+    abstract fun dao(): BreedDao
 
     companion object {
         @Volatile

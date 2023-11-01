@@ -8,12 +8,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.liau.jetdog.ui.home.HomeScreen
 import com.liau.jetdog.ui.theme.JetDogTheme
@@ -37,8 +35,6 @@ class MainActivity : ComponentActivity() {
 fun JetDogApp(){
     JetDogTheme {
         val navController = rememberNavController()
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-
         Scaffold(
             topBar = {},
             bottomBar ={BottomBar(navController)},
