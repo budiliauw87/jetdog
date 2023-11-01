@@ -24,7 +24,6 @@ class MainViewModel(private val repository: DogRepository) : ViewModel() {
 
     fun getDogBreeds() {
         viewModelScope.launch {
-            _uiState.value = UiState.Loading
             _uiState.value = UiState.Success(repository.getDogBreed().single())
         }
     }

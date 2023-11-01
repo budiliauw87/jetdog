@@ -25,7 +25,7 @@ class DogRepository(
     val loginUser = MutableStateFlow("")
 
     fun getDogBreed(): Flow<DogEntity> = flow {
-        delay(2000)
+        delay(3000)
         emit(DogEntity(1, "tester", ""))
     }
 

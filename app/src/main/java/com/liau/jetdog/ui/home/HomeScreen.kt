@@ -2,21 +2,21 @@ package com.liau.jetdog.ui.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -25,7 +25,7 @@ import com.liau.jetdog.R
 import com.liau.jetdog.core.di.Injector
 import com.liau.jetdog.core.di.ViewModelFactory
 import com.liau.jetdog.state.UiState
-import com.liau.jetdog.ui.error.ErrorScreen
+import com.liau.jetdog.ui.other.ErrorScreen
 
 
 /**
@@ -40,7 +40,7 @@ fun HomeScreen(
         factory = ViewModelFactory(Injector.provideRepository(LocalContext.current))
     )
 ) {
-    var titleState = remember { mutableStateOf("Home") }
+//    var titleState = remember { mutableStateOf("Home") }
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -52,8 +52,9 @@ fun HomeScreen(
             viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
                 when (uiState) {
                     is UiState.Loading -> {
-                        Text("Loading..",
-                            style = MaterialTheme.typography.titleLarge
+                        CircularProgressIndicator(
+                            modifier = Modifier.width(64.dp),
+                            color = MaterialTheme.colorScheme.surfaceVariant,
                         )
                     }
                     is UiState.Success -> {
@@ -69,10 +70,11 @@ fun HomeScreen(
                             onRefresh = {}
                         )
                     }
+
+                    else -> {}
                 }
-
             }
-
+            viewModel.getDogBreeds()
         }
     }
 

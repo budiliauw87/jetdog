@@ -1,4 +1,4 @@
-package com.liau.jetdog.ui.error
+package com.liau.jetdog.ui.other
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
