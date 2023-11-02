@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -21,10 +24,15 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
         signingConfig = signingConfigs.getByName("debug")
+        buildConfigField("String", "API_KEY",
+            "\"live_CneUOrmqMqQHWx05Il8FRgWLNol7xyO7xtLzmsrfHk696G3hfFBLzbAkTRJdWbip\""
+        )
     }
 
     buildTypes {
+
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -42,6 +50,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.3"

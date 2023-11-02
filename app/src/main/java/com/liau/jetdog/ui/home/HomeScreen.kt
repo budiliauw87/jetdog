@@ -10,6 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,7 +41,8 @@ fun HomeScreen(
         factory = ViewModelFactory(Injector.provideRepository(LocalContext.current))
     )
 ) {
-//    var titleState = remember { mutableStateOf("Home") }
+//    val refreshing = lazyPagingItems.loadState.refresh is LoadState.Loading
+//    val pullRefreshState = rememberPullRefreshState(refreshing, { lazyPagingItems.refresh() })
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -49,6 +51,9 @@ fun HomeScreen(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center,
         ) {
+            LaunchedEffect(Unit){
+                viewModel.getDogBreeds()
+            }
             viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
                 when (uiState) {
                     is UiState.Loading -> {
@@ -57,24 +62,25 @@ fun HomeScreen(
                             color = MaterialTheme.colorScheme.surfaceVariant,
                         )
                     }
+
                     is UiState.Success -> {
                         Text(
                             stringResource(R.string.menu_home),
                             style = MaterialTheme.typography.titleLarge
                         )
                     }
+
                     is UiState.Error -> {
                         ErrorScreen(
-                            "Error",
+                            uiState.errorMessage,
                             Icons.Filled.ErrorOutline,
-                            onRefresh = {}
+                            onRefresh = { viewModel.getDogBreeds() }
                         )
                     }
-
-                    else -> {}
                 }
             }
-            viewModel.getDogBreeds()
+
+
         }
     }
 

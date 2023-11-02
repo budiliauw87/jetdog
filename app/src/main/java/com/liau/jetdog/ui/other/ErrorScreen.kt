@@ -51,7 +51,6 @@ fun ErrorScreen(
             text = titleError,
             modifier = Modifier.padding(8.dp)
         )
-        Spacer(modifier = Modifier.height(16.dp))
         Button(
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.primary

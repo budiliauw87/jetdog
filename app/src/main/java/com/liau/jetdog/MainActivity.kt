@@ -23,7 +23,6 @@ import com.liaudev.jetgithub.ui.home.FavoriteScreen
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
             JetDogApp()
         }

@@ -24,7 +24,7 @@ class DogRepository(
     val methodQuery = MutableStateFlow(1)
     val loginUser = MutableStateFlow("")
 
-    fun getDogBreed(): Flow<DogEntity> = flow {
+    suspend fun getDogBreed(): Flow<DogEntity> = flow {
         delay(3000)
         emit(DogEntity(1, "tester", ""))
     }
