@@ -1,10 +1,14 @@
 package com.liau.jetdog.ui.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -37,6 +41,7 @@ import com.liau.jetdog.ui.other.ErrorScreen
 @Composable
 fun HomeScreen(
     navController: NavHostController,
+    onRequestDialog: () -> Unit,
     viewModel: MainViewModel = viewModel(
         factory = ViewModelFactory(Injector.provideRepository(LocalContext.current))
     )
@@ -51,7 +56,7 @@ fun HomeScreen(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center,
         ) {
-            LaunchedEffect(Unit){
+            LaunchedEffect(Unit) {
                 viewModel.getDogBreeds()
             }
             viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
@@ -64,10 +69,24 @@ fun HomeScreen(
                     }
 
                     is UiState.Success -> {
-                        Text(
-                            stringResource(R.string.menu_home),
-                            style = MaterialTheme.typography.titleLarge
-                        )
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize(),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                        ) {
+                            Text(
+                                stringResource(R.string.menu_home),
+                                style = MaterialTheme.typography.titleLarge
+                            )
+                            Button(
+                                onClick = { onRequestDialog() },
+                                modifier = Modifier.padding(8.dp),
+                            ) {
+                                Text("Show Dialog")
+                            }
+                        }
+
                     }
 
                     is UiState.Error -> {
@@ -98,5 +117,8 @@ fun HomeScreen(
 @Composable
 fun HomeScreenPreview() {
     val navController = rememberNavController()
-    HomeScreen(navController)
+//    HomeScreen(
+//        navController = navController,
+//
+//    )
 }

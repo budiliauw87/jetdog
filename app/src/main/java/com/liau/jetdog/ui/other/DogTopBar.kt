@@ -1,9 +1,10 @@
 package com.liau.jetdog.ui.other
 
-import android.content.res.Configuration
+import android.service.autofill.OnClickAction
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -14,7 +15,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.liau.jetdog.JetDogApp
 import com.liau.jetdog.R
 
 
@@ -25,30 +25,40 @@ import com.liau.jetdog.R
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DogTopBar(){
+fun DogTopBar(
+    routeTitle: String,
+    onClickNavIcon: () -> Unit,
+    onClickAction: () -> Unit
+) {
     CenterAlignedTopAppBar(
-        colors = TopAppBarDefaults.topAppBarColors(
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             titleContentColor = MaterialTheme.colorScheme.primary,
         ),
         title = {
-            Text(
-                text = stringResource(R.string.app_name)
-            )
+            Text(text = routeTitle.replaceFirstChar { it.uppercase() })
         },
         navigationIcon = {
-            IconButton(onClick = { /* do something */ }) {
-                Icon(
-                    imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = "Localized description"
-                )
+            IconButton(onClick = { onClickNavIcon() }) {
+                if (routeTitle == "detail") {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = stringResource(R.string.menu_back)
+                    )
+                } else {
+                    Icon(
+                        imageVector = Icons.Filled.Search,
+                        contentDescription = stringResource(R.string.menu_search)
+                    )
+                }
+
             }
         },
         actions = {
-            IconButton(onClick = { /* do something */ }) {
+            IconButton(onClick = { onClickAction() }) {
                 Icon(
-                    imageVector = Icons.Filled.Menu,
-                    contentDescription = "Localized description"
+                    imageVector = Icons.Filled.Settings,
+                    contentDescription = stringResource(R.string.menu_settings)
                 )
             }
         },
@@ -60,5 +70,9 @@ fun DogTopBar(){
 )
 @Composable
 fun DogTopBarPreview() {
-    DogTopBar()
+    DogTopBar(
+        routeTitle = stringResource(R.string.menu_home),
+        onClickAction = {},
+        onClickNavIcon = {}
+    )
 }
