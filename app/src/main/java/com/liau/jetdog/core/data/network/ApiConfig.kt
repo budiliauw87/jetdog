@@ -18,7 +18,6 @@ object ApiConfig {
             .readTimeout(120, TimeUnit.SECONDS)
             .build()
     }
-
     fun provideApiService(): ApiService {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)

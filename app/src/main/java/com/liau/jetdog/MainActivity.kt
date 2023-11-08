@@ -8,9 +8,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -49,7 +49,7 @@ fun JetDogApp() {
             topBar = {
                 DogTopBar(
                     routeTitle = routeTitle,
-                    onClickAction = {},
+                    onClickAction = {openDialogSetting  = !openDialogSetting},
                     onClickNavIcon = {}
                 )
             },
@@ -72,7 +72,7 @@ fun JetDogApp() {
             ) {
                 composable(Screen.Home.route) {
                     routeTitle = stringResource(R.string.menu_home)
-                    HomeScreen(navController, { openDialogSetting  = !openDialogSetting })
+                    HomeScreen(navController, {  })
                 }
                 composable(Screen.Favorite.route) {
                     routeTitle = stringResource(R.string.menu_favorite)

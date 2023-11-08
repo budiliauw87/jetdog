@@ -1,6 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
-import org.jetbrains.kotlin.konan.properties.Properties
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -10,6 +7,14 @@ plugins {
 
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("E:\\data\\dev-budi\\JetDog\\keystore\\jetdogkeystore.jks")
+            storePassword = "123456"
+            keyAlias = "jetdog"
+            keyPassword = "123456"
+        }
+    }
     namespace = "com.liau.jetdog"
     compileSdk = 34
 
@@ -32,7 +37,13 @@ android {
     }
 
     buildTypes {
-
+        debug{
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -108,7 +119,6 @@ dependencies {
     implementation("androidx.room:room-paging:$room_version")
 
     //datastore
-    //implementation("androidx.datastore:datastore-preferences-core:1.0.0")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     //retrofit networking

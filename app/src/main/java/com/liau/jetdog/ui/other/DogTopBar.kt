@@ -1,6 +1,5 @@
 package com.liau.jetdog.ui.other
 
-import android.service.autofill.OnClickAction
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
