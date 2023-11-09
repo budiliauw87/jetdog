@@ -11,6 +11,7 @@ import com.liau.jetdog.core.data.AppExecutors
 import com.liau.jetdog.core.data.DogRepository
 import com.liau.jetdog.core.data.local.AppPreferences
 import com.liau.jetdog.core.data.local.database.JetDogDatabase
+import com.liau.jetdog.core.data.network.ApiService
 
 /**
  * Created by Budiman on 19/01/2023.
@@ -44,8 +45,8 @@ object Injector {
     fun provideRepository(context: Context): DogRepository {
         val database = JetDogDatabase.getInstance(context)
         val appExecutors = AppExecutors()
-//        val apiService = ApiConfig.provideApiService()
         val preferences = AppPreferences.getInstance(context.dataStore)
-        return DogRepository.getInstance( preferences, appExecutors, database)
+        val apiService = ApiService.create()
+        return DogRepository.getInstance( apiService, preferences, appExecutors, database)
     }
 }
