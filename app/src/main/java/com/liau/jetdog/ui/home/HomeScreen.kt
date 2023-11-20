@@ -23,8 +23,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.liau.jetdog.MainViewModel
 import com.liau.jetdog.R
 import com.liau.jetdog.core.di.Injector
@@ -40,20 +38,16 @@ import com.liau.jetdog.ui.other.ErrorScreen
  */
 @Composable
 fun HomeScreen(
-    navController: NavHostController,
-    onRequestDialog: () -> Unit,
     viewModel: MainViewModel = viewModel(
         factory = ViewModelFactory(Injector.provideRepository(LocalContext.current))
     )
 ) {
-//    val refreshing = lazyPagingItems.loadState.refresh is LoadState.Loading
-//    val pullRefreshState = rememberPullRefreshState(refreshing, { lazyPagingItems.refresh() })
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
         Box(
-            modifier = Modifier.fillMaxSize(),
+//            modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center,
         ) {
             LaunchedEffect(Unit) {
@@ -80,7 +74,7 @@ fun HomeScreen(
                                 style = MaterialTheme.typography.titleLarge
                             )
                             Button(
-                                onClick = { onRequestDialog() },
+                                onClick = {  },
                                 modifier = Modifier.padding(8.dp),
                             ) {
                                 Text("Show Dialog")
@@ -116,9 +110,5 @@ fun HomeScreen(
 
 @Composable
 fun HomeScreenPreview() {
-    val navController = rememberNavController()
-//    HomeScreen(
-//        navController = navController,
-//
-//    )
+    HomeScreen()
 }

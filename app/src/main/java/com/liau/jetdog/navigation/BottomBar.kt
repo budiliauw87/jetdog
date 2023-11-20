@@ -1,9 +1,10 @@
-package com.liau.jetgithub.ui.component
+package com.liau.jetdog.ui.component
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -13,8 +14,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.liau.jetdog.R
-import com.liau.jetgithub.navigation.BottomNavigationItem
-import com.liau.jetgithub.navigation.Screen
+import com.liau.jetdog.navigation.BottomNavigationItem
+import com.liau.jetdog.navigation.Screen
 
 /**
  * Created by Budiman on 18/01/2023.
@@ -36,6 +37,11 @@ fun BottomBar(
                 title = stringResource(R.string.menu_favorite),
                 icon = Icons.Default.Favorite,
                 screen = Screen.Favorite
+            ),
+            BottomNavigationItem(
+                title = stringResource(R.string.menu_labs),
+                icon = Icons.Default.Lightbulb,
+                screen = Screen.Labs
             ),
             BottomNavigationItem(
                 title = stringResource(R.string.menu_about),

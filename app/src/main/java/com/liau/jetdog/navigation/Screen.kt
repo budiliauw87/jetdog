@@ -1,4 +1,4 @@
-package com.liau.jetgithub.navigation
+package com.liau.jetdog.navigation
 
 /**
  * Created by Budiman on 18/01/2023.
@@ -10,4 +10,7 @@ sealed class Screen(val route: String) {
     object Favorite : Screen("favorite")
     object About : Screen("about")
     object DetailUser : Screen("detail")
+    object Labs : Screen("labs")
+
+    //labs
 }

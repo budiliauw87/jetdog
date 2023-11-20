@@ -1,4 +1,4 @@
-package com.liau.jetgithub.navigation
+package com.liau.jetdog.navigation
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

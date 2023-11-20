@@ -1,4 +1,4 @@
-package com.liaudev.jetgithub.ui.home
+package com.liau.jetdog.ui.home
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
@@ -11,8 +11,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.liau.jetdog.R
 
 
@@ -22,7 +20,7 @@ import com.liau.jetdog.R
  * Budiliauw87@gmail.com
  */
 @Composable
-fun AboutScreen(navController: NavHostController) {
+fun AboutScreen() {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -48,6 +46,5 @@ fun AboutScreen(navController: NavHostController) {
 )
 @Composable
 fun AboutScreenPreview() {
-    val navController = rememberNavController()
-    AboutScreen(navController)
+    AboutScreen()
 }
